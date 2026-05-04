@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy — Atlas</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #475569;
+  --accent: #6366f1;
+  --rule: #e2e8f0;
+  --code-bg: #f1f5f9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120;
+    --fg: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #818cf8;
+    --rule: #1e293b;
+    --code-bg: #1e293b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    Roboto, "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+h1 {
+  font-size: 32px;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: 22px;
+  margin: 48px 0 12px;
+  letter-spacing: -0.01em;
+}
+p, li { color: var(--fg); }
+.muted { color: var(--muted); }
+strong { color: var(--fg); }
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 40px 0;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+}
+th { font-weight: 600; }
+em {
+  display: block;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 14px;
+  font-style: normal;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.nav {
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.nav a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">
+    <a href="./privacy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms of Service</a>
+    <a href="./index.html">Atlas</a>
+  </div>
+  <h1>Privacy Policy — Atlas</h1>
+<p><strong>Effective: May 2026</strong>
+<strong>Last updated: May 2026</strong></p>
+<p>This privacy policy describes how Atlas ("we," "us," or "the app")
+collects, uses, and protects your personal information.</p>
+<p>Read this in plain English first: <strong>Atlas treats your data like the
+private medical record it is. We don't sell anything. We don't run ads.
+We only use your data to power features you've explicitly enabled in
+the app.</strong></p>
+<p>If you have questions, email support@atlashealth.app.</p>
+<hr />
+<h2>What We Collect</h2>
+<p>Atlas collects only information you explicitly provide or generate
+within the app. We do NOT collect device location, contacts, browsing
+history, advertising identifiers, or any data from outside the app.</p>
+<p>The categories we collect:</p>
+<p><strong>Account Information.</strong> Your email address and password when you
+create an account. Passwords are never stored in plaintext — they're
+hashed and managed by our authentication provider (Supabase).</p>
+<p><strong>Profile Information.</strong> Your name, age, sex, height, weight, body
+fat percentage, goals (cut/maintain/bulk), training frequency, and
+unit preferences. You enter these during onboarding and can update or
+delete them at any time.</p>
+<p><strong>Health and Wellness Data.</strong> Bloodwork panels you import (markers,
+values, reference ranges, lab provider, date), supplements and
+protocol items you log, weight measurements, food log entries
+(calories, macros, foods consumed), workout history (exercises sets,
+reps, durations, completion status), and AI chat conversations with
+Atlas.</p>
+<p><strong>Apple Health Data (optional).</strong> If you connect Apple Health, Atlas
+reads weight measurements and step counts from HealthKit. This data
+stays on your device and is only synced to our servers when you
+explicitly take an action that records it (e.g. tapping "Sync from
+Apple Health" on the Weight Tracker). You can disconnect Atlas from
+Apple Health at any time in iOS Settings → Health → Sources → Atlas.</p>
+<p><strong>Subscription Information.</strong> When you purchase Atlas Pro or Atlas
+Premium, Apple processes the payment. We receive only the
+subscription tier and renewal status — never your credit card,
+Apple ID, or billing address.</p>
+<hr />
+<h2>How We Store Your Data</h2>
+<p>All Atlas data is stored on <strong>Supabase</strong>, a managed PostgreSQL
+provider that complies with SOC 2 Type II. Your data is stored in a
+private row protected by <strong>Row Level Security (RLS)</strong> policies — this
+means your records can only be read or modified by your authenticated
+account. No other Atlas user, no Atlas employee without explicit
+break-glass access, and no third party can read your data.</p>
+<p>Data in transit between your device and our servers is encrypted with
+TLS 1.2+. Data at rest in Supabase is encrypted with AES-256.</p>
+<p>We do NOT store data in third-party advertising networks, analytics
+tools that fingerprint users, or marketing databases.</p>
+<hr />
+<h2>Artificial Intelligence Processing</h2>
+<p>Atlas uses <strong>Anthropic's Claude</strong> to generate AI insights and chat
+responses. When you request a lab read or send an Atlas chat message:</p>
+<ol>
+<li>Your data (bloodwork panel, profile, protocol, today's macros) is
+   sent to Anthropic's API along with your message.</li>
+<li>Anthropic processes the request and returns a response.</li>
+<li>Anthropic does NOT use customer API data to train their models —
+   this is contractually guaranteed under their commercial terms.</li>
+<li>The response is cached on your private Atlas record so reopening
+   the same panel doesn't trigger another paid AI call.</li>
+</ol>
+<p>Our Anthropic API key is stored in our backend environment and never
+exposed to your device. You are not billed for AI usage directly —
+your subscription tier covers the cost.</p>
+<p>If you delete a chat thread or lab panel, the cached AI response is
+deleted with it.</p>
+<hr />
+<h2>What We DON'T Do</h2>
+<ul>
+<li>We do not sell your data, ever, to anyone.</li>
+<li>We do not run advertising. There are no ads in Atlas.</li>
+<li>We do not share your health data with insurers, employers,
+  marketers, data brokers, or any third party.</li>
+<li>We do not use your bloodwork or protocol data for any purpose other
+  than powering Atlas features that you've used.</li>
+<li>We do not track your behavior across other apps or websites.</li>
+<li>We do not collect device identifiers for tracking purposes (no IDFA,
+  no cross-app fingerprinting).</li>
+</ul>
+<hr />
+<h2>Your Rights</h2>
+<p>You can:</p>
+<p><strong>Export your data.</strong> Settings → Data &amp; Privacy → Export. You
+receive a JSON file containing every row associated with your account.</p>
+<p><strong>Delete your account.</strong> Settings → Account → Delete Account. This
+permanently erases your profile, bloodwork, food log, workout
+history, protocol, and AI chat history from our servers. Deletion is
+immediate and irreversible.</p>
+<p><strong>Request a copy of what's stored.</strong> Email
+support@atlashealth.app from your account email and we'll send you everything
+within 30 days, free of charge.</p>
+<p><strong>Withdraw consent.</strong> Stop using Atlas at any time. Disconnect Apple
+Health in iOS Settings. Cancel your subscription via Apple's
+subscription management.</p>
+<p>If you reside in California, the EU, the UK, or another jurisdiction
+with comprehensive privacy laws (CCPA, GDPR, UK-GDPR, etc.), you have
+additional statutory rights including data portability, correction,
+and the right to lodge a complaint with a supervisory authority.</p>
+<hr />
+<h2>Children's Privacy</h2>
+<p>Atlas is not intended for users under 13. We do not knowingly collect
+data from children. If you believe a minor has created an Atlas
+account, contact us and we'll delete it.</p>
+<hr />
+<h2>Medical Disclaimer (also referenced in our Terms of Service)</h2>
+<p>Atlas is not a medical device. Atlas does NOT diagnose, treat, cure,
+or prevent any disease. AI insights and recommendations are
+informational only and are not a substitute for professional medical
+advice. Always consult a qualified healthcare provider before making
+changes to your medications, supplements, or treatment.</p>
+<hr />
+<h2>Third-Party Services</h2>
+<p>Atlas uses the following sub-processors:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Purpose</th>
+<th>What they receive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supabase</td>
+<td>Auth + database</td>
+<td>All Atlas data</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td>AI processing</td>
+<td>Bloodwork + chat context (per request)</td>
+</tr>
+<tr>
+<td>Apple</td>
+<td>App distribution + IAP</td>
+<td>Subscription status only</td>
+</tr>
+<tr>
+<td>Expo (EAS)</td>
+<td>Build pipeline</td>
+<td>Source code at build time</td>
+</tr>
+</tbody>
+</table>
+<p>We have data processing agreements with Supabase and Anthropic. None
+of these providers sell your data or use it for advertising.</p>
+<hr />
+<h2>Changes to This Policy</h2>
+<p>We will update this policy as Atlas evolves. Material changes will
+be notified in-app at least 14 days before taking effect. Continued
+use of Atlas after a change means you accept the updated policy.</p>
+<p>The current version is always available at:
+https://lukehharris1.github.io/atlas-legal/privacy.html</p>
+<hr />
+<h2>Contact</h2>
+<p>Questions, complaints, or data requests:</p>
+<p><strong>support@atlashealth.app</strong></p>
+<p>Atlas is operated by Luke Harris (Individual). For physical
+correspondence, email first and we'll provide a mailing address.</p>
+<hr />
+<p><em>This policy is provided as a starting point. Before launching to the
+public App Store, have it reviewed by an attorney familiar with
+mobile health apps, particularly if you serve users outside the US.</em></p>
+</div>
+</body>
+</html>
