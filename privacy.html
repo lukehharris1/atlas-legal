@@ -51,6 +51,11 @@ h2 {
   margin: 48px 0 12px;
   letter-spacing: -0.01em;
 }
+h3 {
+  font-size: 18px;
+  margin: 28px 0 8px;
+  letter-spacing: -0.01em;
+}
 p, li { color: var(--fg); }
 .muted { color: var(--muted); }
 strong { color: var(--fg); }
@@ -71,6 +76,7 @@ th, td {
   text-align: left;
   padding: 10px 12px;
   border-bottom: 1px solid var(--rule);
+  vertical-align: top;
 }
 th { font-weight: 600; }
 em {
@@ -103,8 +109,8 @@ code {
     <a href="./index.html">Atlas</a>
   </div>
   <h1>Privacy Policy — Atlas</h1>
-<p><strong>Effective: May 2026</strong>
-<strong>Last updated: May 2026</strong></p>
+<p><strong>Effective: May 11, 2026</strong><br>
+<strong>Last updated: May 11, 2026</strong></p>
 <p>This privacy policy describes how Atlas ("we," "us," or "the app")
 collects, uses, and protects your personal information.</p>
 <p>Read this in plain English first: <strong>Atlas treats your data like the
@@ -128,15 +134,17 @@ delete them at any time.</p>
 <p><strong>Health and Wellness Data.</strong> Bloodwork panels you import (markers,
 values, reference ranges, lab provider, date), supplements and
 protocol items you log, weight measurements, food log entries
-(calories, macros, foods consumed), workout history (exercises sets,
+(calories, macros, foods consumed), workout history (exercises, sets,
 reps, durations, completion status), and AI chat conversations with
 Atlas.</p>
 <p><strong>Apple Health Data (optional).</strong> If you connect Apple Health, Atlas
-reads weight measurements and step counts from HealthKit. This data
-stays on your device and is only synced to our servers when you
-explicitly take an action that records it (e.g. tapping "Sync from
-Apple Health" on the Weight Tracker). You can disconnect Atlas from
-Apple Health at any time in iOS Settings → Health → Sources → Atlas.</p>
+reads weight measurements and step counts from HealthKit, and writes
+your Atlas-logged weight entries back to Apple Health for two-way
+sync. This data stays on your device and is only synced to our
+servers when you explicitly take an action that records it (e.g.,
+tapping "Sync from Apple Health" on the Weight Tracker or logging a
+weight entry in Atlas). You can disconnect Atlas from Apple Health at
+any time in iOS Settings → Health → Sources → Atlas.</p>
 <p><strong>Subscription Information.</strong> When you purchase Atlas Pro or Atlas
 Premium, Apple processes the payment. We receive only the
 subscription tier and renewal status — never your credit card,
@@ -151,26 +159,64 @@ account. No other Atlas user, no Atlas employee without explicit
 break-glass access, and no third party can read your data.</p>
 <p>Data in transit between your device and our servers is encrypted with
 TLS 1.2+. Data at rest in Supabase is encrypted with AES-256.</p>
+<p>The raw image bytes you upload for vision scans (meal photos, lab
+panel images, supplement labels) are <strong>not</strong> stored on our servers
+after extraction. Only the structured data extracted from them
+(macros, marker values, ingredient lists) is saved to your account.</p>
 <p>We do NOT store data in third-party advertising networks, analytics
 tools that fingerprint users, or marketing databases.</p>
 <hr />
 <h2>Artificial Intelligence Processing</h2>
-<p>Atlas uses <strong>Anthropic's Claude</strong> to generate AI insights and chat
-responses. When you request a lab read or send an Atlas chat message:</p>
-<ol>
-<li>Your data (bloodwork panel, profile, protocol, today's macros) is
-   sent to Anthropic's API along with your message.</li>
-<li>Anthropic processes the request and returns a response.</li>
-<li>Anthropic does NOT use customer API data to train their models —
-   this is contractually guaranteed under their commercial terms.</li>
-<li>The response is cached on your private Atlas record so reopening
-   the same panel doesn't trigger another paid AI call.</li>
-</ol>
-<p>Our Anthropic API key is stored in our backend environment and never
-exposed to your device. You are not billed for AI usage directly —
-your subscription tier covers the cost.</p>
-<p>If you delete a chat thread or lab panel, the cached AI response is
+<p>Atlas uses <strong>Claude</strong>, an AI service operated by <strong>Anthropic, Inc.</strong>
+(548 Market St #20120, San Francisco, CA 94104), to power several
+features. The AI features and what each one sends to Anthropic:</p>
+<ul>
+  <li><strong>Atlas Chat</strong> — your typed message, plus relevant context from
+    your Atlas account (today's macros, your protocol list, your most
+    recent lab panel) is sent to Anthropic to generate a response.</li>
+  <li><strong>Meal photo scan</strong> — the photo of your plate plus any
+    description you type is sent to Anthropic to identify foods and
+    estimate portions.</li>
+  <li><strong>Supplement label scan</strong> — the photo of the nutrition facts
+    panel is sent to Anthropic to extract macros and ingredients.</li>
+  <li><strong>Lab panel scan</strong> — the image of your lab report is sent to
+    Anthropic to extract marker names, values, and reference ranges.</li>
+  <li><strong>Lab AI insights</strong> — your lab markers, reference ranges, and
+    supplement protocol are sent to Anthropic to generate a
+    plain-English interpretation of the panel.</li>
+</ul>
+
+<h3>Your consent</h3>
+<p>The first time you use any of the AI features above, Atlas displays
+an in-app consent screen identifying Anthropic, listing what data
+will be sent for the feature you're invoking, and explaining how
+Anthropic handles that data. <strong>You must explicitly tap "I agree,
+continue" before any data leaves your device.</strong> You can revoke
+consent at any time by deleting your Atlas account (Settings → Delete
+account), which also wipes all data Atlas has stored on your behalf.</p>
+
+<h3>How Anthropic uses your data</h3>
+<p>Anthropic processes the data Atlas sends solely to generate the
+response Atlas requested. Per Anthropic's commercial API terms,
+Anthropic does <strong>not</strong> use your data to train their AI models.
+Anthropic may retain inputs and outputs for up to 30 days for trust
+and safety monitoring, after which the data is deleted. Anthropic's
+own privacy practices are published at
+<a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a>.</p>
+
+<h3>How Atlas stores AI responses</h3>
+<p>The response Anthropic returns is cached on your private Atlas record
+so reopening the same panel or chat doesn't trigger another paid AI
+call. Our Anthropic API key is stored in our backend environment and
+never exposed to your device. You are not billed for AI usage
+directly — your subscription tier covers the cost. If you delete a
+chat thread, scan result, or lab panel, the cached AI response is
 deleted with it.</p>
+
+<h3>What Atlas does NOT send to Anthropic</h3>
+<p>Atlas never sends your password, payment information, account email,
+device identifiers, or any data unrelated to the specific AI feature
+you're invoking.</p>
 <hr />
 <h2>What We DON'T Do</h2>
 <ul>
@@ -187,15 +233,15 @@ deleted with it.</p>
 <hr />
 <h2>Your Rights</h2>
 <p>You can:</p>
-<p><strong>Export your data.</strong> Settings → Data &amp; Privacy → Export. You
-receive a JSON file containing every row associated with your account.</p>
-<p><strong>Delete your account.</strong> Settings → Account → Delete Account. This
-permanently erases your profile, bloodwork, food log, workout
-history, protocol, and AI chat history from our servers. Deletion is
-immediate and irreversible.</p>
+<p><strong>Delete your account.</strong> Settings → Delete account. A two-step
+confirmation prevents accidents. Deletion is immediate and
+irreversible — your profile, bloodwork, food log, weight history,
+workout history, protocol, recipes, and AI chat history are wiped
+from our servers within seconds. After deletion, Atlas retains no
+personally identifiable information about you.</p>
 <p><strong>Request a copy of what's stored.</strong> Email
-support@atlashealth.app from your account email and we'll send you everything
-within 30 days, free of charge.</p>
+support@atlashealth.app from your account email and we'll send you
+everything within 30 days, free of charge.</p>
 <p><strong>Withdraw consent.</strong> Stop using Atlas at any time. Disconnect Apple
 Health in iOS Settings. Cancel your subscription via Apple's
 subscription management.</p>
@@ -230,17 +276,17 @@ changes to your medications, supplements, or treatment.</p>
 <tr>
 <td>Supabase</td>
 <td>Auth + database</td>
-<td>All Atlas data</td>
+<td>All Atlas data, stored under Row Level Security</td>
 </tr>
 <tr>
 <td>Anthropic</td>
-<td>AI processing</td>
-<td>Bloodwork + chat context (per request)</td>
+<td>AI processing (Claude)</td>
+<td>Per-request: chat message + Atlas context, or scanned image, or lab panel data. Not used for model training.</td>
 </tr>
 <tr>
 <td>Apple</td>
-<td>App distribution + IAP</td>
-<td>Subscription status only</td>
+<td>App distribution + IAP + HealthKit</td>
+<td>Subscription status only. HealthKit data stays on your device.</td>
 </tr>
 <tr>
 <td>Expo (EAS)</td>
@@ -264,10 +310,6 @@ https://lukehharris1.github.io/atlas-legal/privacy.html</p>
 <p><strong>support@atlashealth.app</strong></p>
 <p>Atlas is operated by Luke Harris (Individual). For physical
 correspondence, email first and we'll provide a mailing address.</p>
-<hr />
-<p><em>This policy is provided as a starting point. Before launching to the
-public App Store, have it reviewed by an attorney familiar with
-mobile health apps, particularly if you serve users outside the US.</em></p>
 </div>
 </body>
 </html>
